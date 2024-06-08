@@ -1,0 +1,113 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <app-navbar></app-navbar>
+  <!-- Content Wrapper -->
+
+
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+
+      <app-navbartop></app-navbartop>
+
+
+
+
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+
+        <a routerLink="/add-employe" routerLinkActive="active" class="btn btn-success btn-icon-split mb-4">
+          <span class="icon text-white-50">
+            <i class="fas fa-edit"></i>
+          </span>
+          <span class="text" >Ajouter Employe</span>
+        </a>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste employe</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Email</th>
+                  <th style="width: 100px;">Mot de passe</th>
+                  <th>Date Création</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Email</th>
+                  <th style="width: 100px;">Mot de passe</th>
+                  <th>Date Création</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{user.nom}}</td>
+                  <td>{{user.prenom}}</td>
+                  <td>{{user.email}}</td>
+                  <td style="width: 100px;">{{user.password.slice(1,20)}}...</td>
+                  <td>{{user.datecreation.slice(11,16)}} | {{user.datecreation.slice(0,10)}} </td>
+                  <td>{{user.role}}</td>
+                  <td>
+
+                    <form [formGroup]="addForm">
+                      <button type="button" (click)="onDelete(user.idAccount)" class="btn btn-danger btn-icon-split" style="margin-left: 30%;">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-trash"></i>
+                                                </span>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Your Website 2024</span>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <app-logout></app-logout>
+</div>
